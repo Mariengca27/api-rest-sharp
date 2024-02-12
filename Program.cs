@@ -8,28 +8,32 @@ using RestSharpPokemon;
 
 
 
+
 public class program
 {
 
-    static readonly HttpClient client = new HttpClient();
-
-    static async Task Main(string[] args)
+    public static void Main(string[] args)
     {
-        try
-        {
-            HttpResponseMessage responseRequest = await client.GetAsync("https://pokeapi.co/api/v2/pokemon/");
-            responseRequest.EnsureSuccessStatusCode();
-            string responseBodyPokemon = await responseRequest.Content.ReadAsStringAsync();
 
-            var data = JsonConvert.DeserializeObject<PokemonMascotes>(responseBodyPokemon);
+        var pokemonEspecies = new RestClient($"https://pokeapi.co/api/v2/pokemon-species/");
+        var requisicaoPegarEspecies = new RestRequest("", Method.Get);
+        var respostaPegarEspecies = pokemonEspecies.Execute(requisicaoPegarEspecies);
 
-            Console.WriteLine(data);
-        }
-        catch (HttpRequestException e)
+
+        var pokemonResposta = JsonConvert.DeserializeObject<PokemonNaTela>(respostaPegarEspecies.Content);
+
+        Console.WriteLine("BOAS VINDAS CAÇADOR DE POKEMON");
+        Console.WriteLine("Escolha uma das opções abaixo para continuar na caçada ao seu Pokemon =):");
+
+
+
+        foreach (var pokemon in pokemonResposta.Results)
         {
-            Console.WriteLine("\nException Caught!");
-            Console.WriteLine("Message :{0} ", e.Message);
+            Console.WriteLine(pokemon.Name);
         }
+
+
+
     }
 }
 
