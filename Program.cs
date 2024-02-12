@@ -1,37 +1,36 @@
-﻿using RestSharp;
+﻿using System;
+using System.Text.Json;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using RestSharp;
+using System;
+using RestSharpPokemon;
 
-class program
+
+
+public class program
 {
 
-    static void Main(string[] args)
+    static readonly HttpClient client = new HttpClient();
+
+    static async Task Main(string[] args)
     {
-
-        InvocarApiPokemon();
-
-
-    }
-
-    private static void InvocarApiPokemon()
-    {
-
-        var pokemonApi = new RestClient($"https://pokeapi.co/api/v2/pokemon/");
-        RestRequest requesteApi = new RestRequest("", Method.Get);
-        var responseApi = pokemonApi.Execute(requesteApi);
-
-
-        if (responseApi.StatusCode == System.Net.HttpStatusCode.OK)
+        try
         {
-            Console.WriteLine(responseApi.Content);
-        }
-        else{
-            Console.WriteLine(responseApi.ErrorMessage);
-        }
-        Console.ReadKey();
+            HttpResponseMessage responseRequest = await client.GetAsync("https://pokeapi.co/api/v2/pokemon/");
+            responseRequest.EnsureSuccessStatusCode();
+            string responseBodyPokemon = await responseRequest.Content.ReadAsStringAsync();
 
+            var data = JsonConvert.DeserializeObject<PokemonMascotes>(responseBodyPokemon);
+
+            Console.WriteLine(data);
+        }
+        catch (HttpRequestException e)
+        {
+            Console.WriteLine("\nException Caught!");
+            Console.WriteLine("Message :{0} ", e.Message);
+        }
     }
-
-
-
 }
 
 
