@@ -36,11 +36,7 @@ namespace RestSharpPokemon
             {
                 Console.WriteLine("Habilidade: " + habilidade.Habilidade.Name);
             }
-
-
-
         }
-
 
 
         public void MostrarPokemonsAdotados(List<PokemonDetalhes> pokemonsAdotados)

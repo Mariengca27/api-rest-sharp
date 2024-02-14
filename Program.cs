@@ -11,28 +11,14 @@ using RestSharpPokemon;
 
 public class program
 {
-
-    public static void Main(string[] args)
+    static void Main(string[] args)
     {
-
-        var pokemonEspecies = new RestClient($"https://pokeapi.co/api/v2/pokemon-species/");
-        var requisicaoPegarEspecies = new RestRequest("", Method.Get);
-        var respostaPegarEspecies = pokemonEspecies.Execute(requisicaoPegarEspecies);
+        // Agora os metodos serão instanciados e chamados aqui na classe principal
 
 
-        var pokemonResposta = JsonConvert.DeserializeObject<PokemonNaTela>(respostaPegarEspecies.Content);
-
-        Console.WriteLine("BOAS VINDAS CAÇADOR DE POKEMON");
-        Console.WriteLine("Escolha uma das opções abaixo para continuar na caçada ao seu Pokemon =):");
-
-
-
-        foreach (var pokemon in pokemonResposta.Results)
-        {
-            Console.WriteLine(pokemon.Name);
-        }
 
     }
 }
+
 
 
