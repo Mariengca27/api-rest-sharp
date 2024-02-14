@@ -32,8 +32,6 @@ public class program
             Console.WriteLine(pokemon.Name);
         }
 
-
-
     }
 }
 
