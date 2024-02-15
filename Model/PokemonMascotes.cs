@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestSharpPokemon
+namespace RestSharpPokemon.Model
 {
     public class PokemonMascotes
     {
@@ -12,7 +12,7 @@ namespace RestSharpPokemon
         public string Name { get; set; }
 
         public string Url { get; set; }
-       
+
 
     }
 }

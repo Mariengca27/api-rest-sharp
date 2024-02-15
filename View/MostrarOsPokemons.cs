@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RestSharpPokemon.Model;
 
-namespace RestSharpPokemon
+namespace RestSharpPokemon.View
 {
     public class MostrarOsPokemons
     {
@@ -51,7 +52,7 @@ namespace RestSharpPokemon
             {
                 for (int i = 0; i < pokemonsAdotados.Count; i++)
                 {
-                    Console.WriteLine((i + 1) + ". " + pokemonsAdotados[i].Name);
+                    Console.WriteLine(i + 1 + ". " + pokemonsAdotados[i].Name);
                 }
             }
         }

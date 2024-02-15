@@ -1,6 +1,4 @@
-﻿
-
-namespace RestSharpPokemon
+﻿namespace RestSharpPokemon.Model
 {
     public class PokemonNaTela
     {
