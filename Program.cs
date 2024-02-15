@@ -9,7 +9,7 @@ using RestSharpPokemon;
 
 
 
-public class program
+public class Program
 {
     static void Main(string[] args)
     {
